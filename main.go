@@ -1,24 +1,13 @@
 package main
 
 import (
-	"encoding/json"
 	"flag"
 	"net/http"
 
 	"github.com/ww24/gops/libs"
 	"github.com/ww24/gops/routes"
 	"github.com/zenazn/goji"
-	"github.com/zenazn/goji/web"
 )
-
-func api(c web.C, w http.ResponseWriter, r *http.Request) {
-	encoder := json.NewEncoder(w)
-	err := encoder.Encode(libs.JSON{"status": "ok"})
-	if err != nil {
-		// status 500 返したい
-		panic(err)
-	}
-}
 
 func main() {
 	libs.Configure()
@@ -31,6 +20,7 @@ func main() {
 	// })
 	goji.Get("/", routes.Top)
 	goji.Get("/auth", routes.Auth)
+	goji.Get("/auth/twitter", routes.Callback)
 	// static route
 	goji.Get("/*", http.FileServer(http.Dir("public")))
 	flag.Set("bind", ":8000")

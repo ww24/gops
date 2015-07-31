@@ -5,8 +5,6 @@ import (
 	"log"
 	"os"
 
-	"github.com/kr/pretty"
-
 	"gopkg.in/yaml.v2"
 )
 
@@ -51,7 +49,6 @@ func Configure() {
 	}
 
 	recursiveOverride(&Config, override)
-	pretty.Println(Config)
 }
 
 func recursiveOverride(conf *Hash, over Hash) {
