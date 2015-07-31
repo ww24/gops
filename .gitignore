@@ -1,0 +1,18 @@
+# Photos
+public/photos/*
+public/thumbs/*
+temp/*
+
+# Git
+.*
+!.gitignore
+!.gitkeep
+!.editorconfig
+
+# MongoDB
+db/*
+!db/mongod.conf
+
+# Settings
+config/*
+!config/default.yml
